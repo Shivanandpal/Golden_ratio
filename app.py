@@ -1,5 +1,4 @@
 import streamlit as st
-import cv2
 import mediapipe
 import numpy as np
 from PIL import Image
@@ -33,7 +32,7 @@ if uploaded_file:
 
     h, w, _ = img.shape
 
-    rgb = cv2.cvtColor(img, cv2.COLOR_BGR2RGB)
+    rgb = img.copy()
 
     results = face_mesh.process(rgb)
 
@@ -72,9 +71,8 @@ if uploaded_file:
 
             for point in lm:
                 x,y = int(point.x*w), int(point.y*h)
-                cv2.circle(img,(x,y),1,(0,255,0),-1)
 
-        passport_img = cv2.resize(img, (300, 400))  # width, height
+        passport_img = image.resize((300, 400))
         st.image(passport_img)
 
         st.subheader("Golden Ratio Results")
