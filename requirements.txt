@@ -1,4 +1,5 @@
 streamlit
+opencv
 mediapipe
 numpy
 pillow
