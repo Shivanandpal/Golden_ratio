@@ -9,7 +9,7 @@ print(mediapipe.__file__)
 GOLDEN_RATIO = 1.618
 
 # Correct mediapipe import
-mp_face_mesh = mediapipe.solutions.face_mesh
+mp_face_mesh = mediapipe.solutions.face_mesh if hasattr(mediapipe, "solutions") else None
 face_mesh = mp_face_mesh.FaceMesh(static_image_mode=True)
 
 def distance(p1, p2, w, h):
